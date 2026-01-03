@@ -1,0 +1,23 @@
+{
+  "name": "upi-to-crypto",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "start": "bun src/index.ts"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "ethers": "^6.16.0",
+    "hono": "^4.11.3",
+    "razorpay": "^2.9.6",
+    "web3": "^4.16.0",
+    "zod": "^4.3.4"
+  }
+}
