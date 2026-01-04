@@ -1,15 +1,20 @@
-# upi-to-crypto
+# Ether Pay
 
-To install dependencies:
+To run the server, locally.
 
-```bash
-bun install
+1. Ensure .env following the .env.template
+2. run in base directory
+
+```
+bun run dev
 ```
 
-To run:
+To run the example merchant website, locally.
 
-```bash
-bun run index.ts
+1. Ensure .env following the .env.template
+2. run in ./storefront directory
+
 ```
-
-This project was created using `bun init` in bun v1.2.21. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+cd storefront
+bun run dev
+```
