@@ -2,7 +2,8 @@
   import { page } from "$app/state";
   import { LoaderCircle } from "@lucide/svelte";
   import { onMount } from "svelte";
-  import { goto } from "$app/navigation"
+  import { goto } from "$app/navigation";
+  import { PUBLIC_ETHER_PAY_URL } from "$env/static/public";
 
   let loading = $state(true);
   let txHash = $state(null);
@@ -10,19 +11,19 @@
   onMount(async () => {
     try {
       const linkId = page.url.searchParams.get("razorpay_payment_link_id");
-      const res = await fetch("http://localhost:8080/api/upi/capture", {
+      const res = await fetch(`${PUBLIC_ETHER_PAY_URL}/api/upi/capture`, {
         method: "POST",
         body: JSON.stringify({
           linkId,
         }),
       });
       const body = await res.json();
-      txHash = body.transactionHash
+      txHash = body.transactionHash;
       loading = false;
 
       setTimeout(() => {
-        goto("/")
-      }, 3000)
+        goto("/");
+      }, 3000);
     } catch (e: any) {
       console.error("err", e);
     }

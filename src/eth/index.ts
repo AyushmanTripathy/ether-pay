@@ -1,7 +1,7 @@
 import env from "@/env";
 import { Web3 } from "web3";
 
-const web3 = new Web3("https://ethereum-sepolia.publicnode.com")
+const web3 = new Web3(env.RCP_URL)
 
 export async function sendEth(recipientAddress: string, amountInEth: number) {
   const wallet = web3.eth.accounts.privateKeyToAccount(env.PRIVATE_KEY)

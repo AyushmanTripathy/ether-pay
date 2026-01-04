@@ -1,15 +1,19 @@
 <script lang="ts">
-    import { page } from "$app/state";
+  import { page } from "$app/state";
   import { LoaderCircle } from "@lucide/svelte";
+  import {
+    PUBLIC_ETHER_PAY_URL,
+    PUBLIC_RECEIVER_WALLET_ID,
+  } from "$env/static/public";
 
-  let walletId = $state("0x8aB5830277C1B07a1Eb4Afd36eC2dB2bC261e964");
+  let walletId = $state(PUBLIC_RECEIVER_WALLET_ID);
   let amount = $state(100);
   let loading = $state(false);
 
   async function handleFetch() {
-    loading = true
+    loading = true;
     try {
-      const res = await fetch("http://localhost:8080/api/upi", {
+      const res = await fetch(`${PUBLIC_ETHER_PAY_URL}/api/upi`, {
         method: "POST",
         body: JSON.stringify({
           origin: page.url.origin,
@@ -22,7 +26,7 @@
       window.location.href = body.link;
     } catch (e: any) {
       console.error("err", e);
-      loading = false
+      loading = false;
     }
   }
 </script>
